@@ -12,8 +12,6 @@ const schemaCliente = new Schema({
     correo: String,
     telefono: String,
     edad: Number,
-    departamento: String,
-    ciudad: String,
     direccion: String
 });
 
