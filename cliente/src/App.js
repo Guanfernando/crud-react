@@ -8,11 +8,32 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      <h1>CRUD SENA</h1>
+      <nav className="navbar navbar-expand-lg bg-body-dark navbar-dark navbar bg-dark">
+    <div className="container">
+      <a className="navbar-brand" href="#">Crud SENA</a>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="agregarusuario">Agregar Cliente</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
         <BrowserRouter>
           <Routes>
             <Route path= '/' element={<ListaUsuarios/>} exact></Route>
-            <Route path= '/agregarusurio' element={<AgregarUsuario/>} exact></Route>
+            <Route path= '/agregarusuario' element={<AgregarUsuario/>} exact></Route>
             <Route path= '/editarusurio' element={<EditarUsuario/>} exact></Route>
           </Routes>
         </BrowserRouter>
