@@ -16,17 +16,37 @@ const schemaCliente = new Schema({
 });
 
 // Crear el modelo de usuario
-const modeloUsuario = mongoose.model('usuarios', schemaCliente);
+const modeloCliente = mongoose.model('usuarios', schemaCliente);
 
 
 
-
+/*Ruta de prueba
 // Definir la ruta '/ejemplo'
 router.get('/ejemplo', (req, res) => {
     res.send('Hola mundo');
 
-
 });
+*/
+
+// Ruta para crear un nuevo usuario
+router.post('/AgregarUsuario', (req, res) => {
+    const nuevoCliente = new modeloCliente({
+        documento: req.body.documento,
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        correo: req.body.correo,
+        telefono: req.body.telefono,
+        edad: req.body.edad,
+        direccion: req.body.direccion
+    });
+    nuevoCliente.save(function (err){
+        if (!err) {
+            res.send('Usuario agregado con exito');
+        } else {
+            res.send('Error al agregar usuario');
+        }
+    })
+})
 
 // Exportar el router después de definir las rutas
 module.exports = router;

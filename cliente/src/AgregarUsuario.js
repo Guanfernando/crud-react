@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import axios from "axios";
 
 function AgregarUsuario(){
      // hooks
@@ -22,11 +23,11 @@ function AgregarUsuario(){
         }
         console.log (cliente);
         
-        axios.post('/api/usuario/agregarusuario', cliente)
+        axios.post('/api/usuario/AgregarUsuario', cliente)
         .then(res=>{
             alert(res.data)
         })
-        
+        .then(err => {console.log(err)})
     }
     return(
 
@@ -36,31 +37,31 @@ function AgregarUsuario(){
         <form class="row g-3">
         <div class="col-md-4">
                 <label for="documento" class="form-label">Documento</label>
-                <input type="number" class="form-control is-valid" value={documento} onChange={(e) => setDocumento(e.target)} id="documento" required/>
+                <input type="number" class="form-control is-valid" value={documento} onChange={(e) => setDocumento(e.target.value)} id="documento" required/>
             </div>
             <div class="col-md-4">
                 <label for="nombre" class="form-label">Nombres</label>
-                <input type="text" class="form-control is-valid" value={nombre} onChange={(e) => setNombre(e.target)} id="nombre" required/>
+                <input type="text" class="form-control is-valid" value={nombre} onChange={(e) => setNombre(e.target.value)} id="nombre" required/>
             </div>
             <div class="col-md-4">
                 <label for="apellido" class="form-label">Apellidos</label>
-                <input type="text" class="form-control is-valid" value={apellido} onChange={(e) => setApellido(e.target)} id="apellido" required/>
+                <input type="text" class="form-control is-valid" value={apellido} onChange={(e) => setApellido(e.target.value)} id="apellido" required/>
             </div>
             <div class="col-md-6">
                 <label for="correo" class="form-label">Correo</label>
-                <input type="Email" class="form-control is-invalid" id="correo" value={correo} onChange={(e) => setCorreo(e.target)} aria-describedby="correoFeedback" required/>
+                <input type="Email" class="form-control is-invalid" id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)} aria-describedby="correoFeedback" required/>
             </div>
             <div class="col-md-3">
                 <label for="telefono" class="form-label">Telefono</label>
-                <input type="number" class="form-control is-invalid" id="telefono" value={telefono} onChange={(e) => setTelefono(e.target)} aria-describedby="telefonoFeedback" required/>
+                <input type="number" class="form-control is-invalid" id="telefono" value={telefono} onChange={(e) => setTelefono(e.target.value)} aria-describedby="telefonoFeedback" required/>
             </div>
             <div class="col-md-3">
                 <label for="edad" class="form-label">Edad</label>
-                <input type="number" class="form-control is-invalid" value={edad} onChange={(e) => setEdad(e.target)} id="edad" aria-describedby="edadFeedback" required/>
+                <input type="number" class="form-control is-invalid" value={edad} onChange={(e) => setEdad(e.target.value)} id="edad" aria-describedby="edadFeedback" required/>
             </div>
             <div class="col-md-4">
                 <label for="direccion" class="form-label">Direccion</label>
-                <input type="text" class="form-control is-valid" value={direccion} onChange={(e) => setDireccion(e.target)} id="direccion" required/>
+                <input type="text" class="form-control is-valid" value={direccion} onChange={(e) => setDireccion(e.target.value)} id="direccion" required/>
             </div>
             <div class="col-12">
                 <div class="form-check">

@@ -8,6 +8,11 @@ const archivoBD = require('./conexion');
 //importacion de archivo de rutas y modelo de cliente
 const rutaCliente = require ('./rutas/usuario');
 
+//importar body parser
+const bodyParser = require('body-parser');
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+
 
 app.use ('/api/usuario',rutaCliente)
 
