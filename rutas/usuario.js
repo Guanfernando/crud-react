@@ -1,35 +1,57 @@
 const express = require('express');
 const router = express.Router();
 
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Definir el esquema del cliente
 const schemaCliente = new Schema({
-    documento: String,
-    nombre: String,
-    apellido: String,
-    correo: String,
-    telefono: String,
-    edad: Number,
-    direccion: String
+    documento:{ 
+        type: String,
+        required: [true, 'El campo es obligatorio']
+        },
+    nombre:{
+        type: String,
+        required: [true, 'El campo es obligatorio']
+        },
+    apellido:{
+        type: String,
+        required: [true, 'El campo es obligatorio']
+        },
+    correo:{
+        type: String,
+        required: [true, 'El campo es obligatorio']
+        },
+    telefono:{
+        type: String,
+        required: [true, 'El campo es obligatorio']
+        },
+    edad:{
+        type: Number,
+        required: [true, 'El campo es obligatorio']
+        },
+    direccion:{
+        type: String,
+        required: [true, 'El campo es obligatorio']
+        },
 });
+    
 
 // Crear el modelo de usuario
-const modeloCliente = mongoose.model('usuarios', schemaCliente);
+const modeloCliente = mongoose.model('Clientes', schemaCliente);
 
+// Exportar el router después de definir las rutas
+module.exports = router;
 
-
-/*Ruta de prueba
-// Definir la ruta '/ejemplo'
-router.get('/ejemplo', (req, res) => {
-    res.send('Hola mundo');
-
+/*ruta de prueba '/ejemplo'
+router.post('/ejemplo', (req, res) => {
+    res.send('respuesta desde ruta de prueba');
 });
 */
 
-// Ruta para crear un nuevo usuario
-router.post('/AgregarUsuario', (req, res) => {
+//Ruta para crear un nuevo usuario
+router.post('/AgregarUsuario', async (req, res) => {
     const nuevoCliente = new modeloCliente({
         documento: req.body.documento,
         nombre: req.body.nombre,
@@ -39,15 +61,10 @@ router.post('/AgregarUsuario', (req, res) => {
         edad: req.body.edad,
         direccion: req.body.direccion
     });
-    nuevoCliente.save(function (err){
-        if (!err) {
-            res.send('Usuario agregado con exito');
-        } else {
-            res.send('Error al agregar usuario');
-        }
-    })
-})
-
-// Exportar el router después de definir las rutas
-module.exports = router;
-
+    try {
+        await nuevoCliente.save();
+        res.status(200).send('Usuario guardado');
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});

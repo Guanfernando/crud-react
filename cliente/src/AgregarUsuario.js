@@ -23,55 +23,52 @@ function AgregarUsuario(){
         }
         console.log (cliente);
         
+        // Enviar datos al servidor
         axios.post('/api/usuario/AgregarUsuario', cliente)
-        .then(res=>{
-            alert(res.data)
+        .then(res => {
+            alert(res.data);
+            console.log(cliente);
         })
-        .then(err => {console.log(err)})
+        .catch(err => {
+            console.log(err);
+        });
+        
     }
     return(
 
         <div className="container">
 
         <h1>Agregar Cliente</h1>
-        <form class="row g-3">
-        <div class="col-md-4">
-                <label for="documento" class="form-label">Documento</label>
-                <input type="number" class="form-control is-valid" value={documento} onChange={(e) => setDocumento(e.target.value)} id="documento" required/>
+        <form className="row g-3">
+        <div className="col-md-4">
+                <label htmlFor="documento" className="form-label">Documento</label>
+                <input type="number" className="form-control is-valid" value={documento} onChange={(e) => setDocumento(e.target.value)} id="documento" required/>
             </div>
-            <div class="col-md-4">
-                <label for="nombre" class="form-label">Nombres</label>
-                <input type="text" class="form-control is-valid" value={nombre} onChange={(e) => setNombre(e.target.value)} id="nombre" required/>
+            <div className="col-md-4">
+                <label htmlFor="nombre" className="form-label">Nombres</label>
+                <input type="text" className="form-control is-valid" value={nombre} onChange={(e) => setNombre(e.target.value)} id="nombre" required/>
             </div>
-            <div class="col-md-4">
-                <label for="apellido" class="form-label">Apellidos</label>
-                <input type="text" class="form-control is-valid" value={apellido} onChange={(e) => setApellido(e.target.value)} id="apellido" required/>
+            <div className="col-md-4">
+                <label htmlFor="apellido" className="form-label">Apellidos</label>
+                <input type="text" className="form-control is-valid" value={apellido} onChange={(e) => setApellido(e.target.value)} id="apellido" required/>
             </div>
-            <div class="col-md-6">
-                <label for="correo" class="form-label">Correo</label>
-                <input type="Email" class="form-control is-invalid" id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)} aria-describedby="correoFeedback" required/>
+            <div className="col-md-6">
+                <label htmlFor="correo" className="form-label">Correo</label>
+                <input type="Email" className="form-control is-valid" id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)} aria-describedby="correoFeedback" required/>
             </div>
-            <div class="col-md-3">
-                <label for="telefono" class="form-label">Telefono</label>
-                <input type="number" class="form-control is-invalid" id="telefono" value={telefono} onChange={(e) => setTelefono(e.target.value)} aria-describedby="telefonoFeedback" required/>
+            <div className="col-md-3">
+                <label htmlFor="telefono" className="form-label">Telefono</label>
+                <input type="number" className="form-control is-valid" id="telefono" value={telefono} onChange={(e) => setTelefono(e.target.value)} aria-describedby="telefonoFeedback" required/>
             </div>
-            <div class="col-md-3">
-                <label for="edad" class="form-label">Edad</label>
-                <input type="number" class="form-control is-invalid" value={edad} onChange={(e) => setEdad(e.target.value)} id="edad" aria-describedby="edadFeedback" required/>
+            <div className="col-md-3">
+                <label htmlFor="edad" className="form-label">Edad</label>
+                <input type="number" className="form-control is-valid" value={edad} onChange={(e) => setEdad(e.target.value)} id="edad" aria-describedby="edadFeedback" required/>
             </div>
-            <div class="col-md-4">
-                <label for="direccion" class="form-label">Direccion</label>
-                <input type="text" class="form-control is-valid" value={direccion} onChange={(e) => setDireccion(e.target.value)} id="direccion" required/>
+            <div className="col-md-4">
+                <label htmlFor="direccion" className="form-label">Direccion</label>
+                <input type="text" className="form-control is-valid" value={direccion} onChange={(e) => setDireccion(e.target.value)} id="direccion" required/>
             </div>
-            <div class="col-12">
-                <div class="form-check">
-                <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required/>
-                <label class="form-check-label" for="invalidCheck3">
-                    Agree to terms and conditions
-                </label>
-                </div>
-            </div>
-            <div class="col-12">
+            <div className="col-12">
                 <button onClick={agregarUsuario} className="btn btn-success">Agregar Usuario</button>
             </div>
         </form>
@@ -79,4 +76,4 @@ function AgregarUsuario(){
     )
 }
 
-export default AgregarUsuario
+export default AgregarUsuario;

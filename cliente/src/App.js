@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import ListaUsuarios from './ListaUsuarios';
 import AgregarUsuario from './AgregarUsuario';
 import EditarUsuario from './EditarUsuario';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-function App() {
+function App() { 
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg bg-body-dark navbar-dark navbar bg-dark">
