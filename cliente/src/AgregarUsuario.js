@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+    import React, {useState} from 'react'
 import axios from "axios";
 
 function AgregarUsuario(){
@@ -24,7 +24,7 @@ function AgregarUsuario(){
         console.log (cliente);
         
         // Enviar datos al servidor
-        axios.post('/api/usuario/AgregarUsuario', cliente)
+        axios.post('api/usuario/AgregarUsuario', cliente)
         .then(res => {
             alert(res.data);
             console.log(cliente);

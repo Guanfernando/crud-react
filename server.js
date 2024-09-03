@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
 })
 
 // configuracion servidor
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, function(){
+app.listen(5000, function(){
 console.log(`el servidor esta en ejecucion...`)
 });

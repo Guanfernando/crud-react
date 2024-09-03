@@ -38,7 +38,7 @@ const schemaCliente = new Schema({
 });
     
 
-// Crear el modelo de usuario
+// Crear el modelo del cliente
 const modeloCliente = mongoose.model('Clientes', schemaCliente);
 
 // Exportar el router después de definir las rutas
@@ -50,7 +50,7 @@ router.post('/ejemplo', (req, res) => {
 });
 */
 
-//Ruta para crear un nuevo usuario
+//Ruta para agregar  un nuevo cliente
 router.post('/AgregarUsuario', async (req, res) => {
     const nuevoCliente = new modeloCliente({
         documento: req.body.documento,
@@ -63,8 +63,18 @@ router.post('/AgregarUsuario', async (req, res) => {
     });
     try {
         await nuevoCliente.save();
-        res.status(200).send('Usuario guardado');
+        res.status(200).send('Usuario guardado con exito!');
     } catch (err) {
         res.status(500).send(err.message);
     }
 });
+
+//obtener todos los usuarios
+router.get('/obtenerUsuario', async (req, res) => {
+    try {
+        const clientes = await modeloCliente.find();
+        res.status(200).send(clientes);
+        } catch (err) {
+            res.status(500).send(err.message);
+            }
+            });
