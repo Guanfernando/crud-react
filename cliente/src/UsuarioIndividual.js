@@ -4,19 +4,18 @@ import { useNavigate, Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
-
 function UsuarioIndividual({ cliente }) {
     const navegar = useNavigate();
-    
+
+    const navigate= useNavigate()
     // Animación del scroll al bajar usando AOS
     useEffect(() => {
         AOS.init();
     }, []);
 
     // Función para borrar usuario
-    function borrarUsuario(documento) {
-        axios.post('api/usuario/borrarUsuario', { documento: documento })
+    function borrarCliente(documento) {
+        axios.post(`/api/usuario/borrarCliente/${documento}`)
             .then(res => {
                 console.log(res.data);
                 alert(res.data);
@@ -41,12 +40,15 @@ function UsuarioIndividual({ cliente }) {
                         <li className='list-group-item'>{cliente.edad}</li>
                         <li className='list-group-item'>{cliente.direccion}</li>
                     </ul>
-                    <Link to={`/EditarUsuario/${cliente.documento}`}>
-                        <button className='btn btn-success'>Editar</button>
-                    </Link>
-                    &nbsp;
-                    <button className='btn btn-danger' onClick={() => borrarUsuario(cliente.documento)}>Borrar</button>
-                    <hr className='mt-4' />
+                        <div className= 'p-2'>
+                            <Link to={`/EditarUsuario/${cliente.documento}`}>
+                                <li className='btn btn-success'>Editar</li>
+                            </Link>
+                            &nbsp;
+                            <button className='btn btn-danger' onClick={() => {borrarCliente(cliente.documento)}}>Borrar</button>
+                            <hr className='mt-4' />
+                            <button onClick={() => navigate('/app')}>Ingresar</button>
+                        </div>
                 </div>
             </div>
         </div>

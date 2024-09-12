@@ -1,40 +1,24 @@
-import './App.css';
-import ListaUsuarios from './ListaUsuarios';
-import AgregarUsuario from './AgregarUsuario';
-import EditarUsuario from './EditarUsuario';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-function App() { 
+function App() {
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg bg-body-dark navbar-dark navbar bg-dark">
-    <div className="container">
-      <a className="navbar-brand" href="/">Crud SENA</a>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="listausuarios">Inicio</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="agregarusuario">Agregar Cliente</a>
-          </li>
-        </ul>
+      {/* Navbar */}
+      {/* Mensaje de bienvenida y botones centrados */}
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-md-6 text-center">
+            <h1>Software de Gestión de Clientes</h1>
+            <p>Bienvenido a nuestro sistema, selecciona una opción para continuar.</p>
+
+            {/* Botones centrados */}
+            <div className="mt-4">
+              <Link to="/listausuarios" className="btn btn-primary mx-2">Consultar Clientes</Link>
+              <Link to="/agregarusuario" className="btn btn-success mx-2">Agregar Cliente</Link>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
-
-        <BrowserRouter>
-          <Routes>
-            <Route path= '/' element={<ListaUsuarios/>} exact></Route>
-            <Route path= '/agregarusuario' element={<AgregarUsuario/>} exact></Route>
-            <Route path= '/editarusurio' element={<EditarUsuario/>} exact></Route>
-            
-
-          </Routes>
-        </BrowserRouter>
     </div>
   );
 }

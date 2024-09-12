@@ -1,5 +1,7 @@
-    import React, {useState} from 'react'
+import React, {useState} from 'react'
 import axios from "axios";
+import { useNavigate, } from 'react-router-dom';
+
 
 function AgregarUsuario(){
      // hooks
@@ -10,6 +12,9 @@ function AgregarUsuario(){
     const[telefono, setTelefono] = useState('')
     const[edad, setEdad] = useState('')
     const[direccion, setDireccion] = useState('')
+
+    const navigate= useNavigate()
+
 
     function agregarUsuario(){
         let cliente={
@@ -71,6 +76,9 @@ function AgregarUsuario(){
             <div className="col-12">
                 <button onClick={agregarUsuario} className="btn btn-success">Agregar Usuario</button>
             </div>
+
+            <button onClick={() => navigate('/app')}>Ingresar</button>
+
         </form>
     </div>
     )

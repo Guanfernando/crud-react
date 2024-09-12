@@ -14,15 +14,15 @@ function ListaUsuarios(){
             setdatausuario(res.data)
         })
         .catch(err =>{
-            console.log(err)
+            console.log(err) 
         })
     },[])
 
     // mapear lista de usuarios en objeto de usuario
     const listaUsuarios = datausuarios.map(cliente => {
         return (
-            <div>
-                <UsuarioIndividual cliente={cliente}/>
+            <div key={cliente.documento}>
+            <UsuarioIndividual cliente={cliente}/>
             </div>
         )
     })
